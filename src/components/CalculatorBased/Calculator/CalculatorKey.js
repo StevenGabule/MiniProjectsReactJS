@@ -6,7 +6,7 @@ class CalculatorKey extends Component {
         const {onPress, className, ...props} = this.props;
         return (
             <PointTarget onPoint={onPress}>
-                <button className={`calculator-key ${className}`} {...props}/>
+                <button className={`calculator-key ${className} btn btn-dark`} {...props}/>
             </PointTarget>
         )
     }

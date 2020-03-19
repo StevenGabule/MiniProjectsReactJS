@@ -18,7 +18,6 @@ class Calculator extends Component {
         waitingForOperand: false
     };
 
-
     clearAll = () => {
         this.setState({
             value: null,
