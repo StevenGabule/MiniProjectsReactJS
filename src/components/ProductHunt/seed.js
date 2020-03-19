@@ -11,8 +11,8 @@ window.Seed = (function () {
             description: 'On-demand sand castle construction expertise.',
             url: '#',
             votes: generateVoteCount(),
-            submitterAvatarUrl: 'daniel.jpg',
-            productImageUrl: 'image-aqua.png',
+            submitterAvatarUrl: 'images/avatars/daniel.jpg',
+            productImageUrl: 'images/products/image-aqua.png',
         },
         {
             id: 2,
