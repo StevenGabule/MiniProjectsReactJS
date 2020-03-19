@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import './components/ProductHunt/seed';
 
-import ProductHunt from "./components/ProductHunt/ProductHunt";
+import './components/TimeLogger/helpers';
+import TimersDashboard from "./components/TimeLogger/TimersDashboard";
+
+// import './components/ProductHunt/seed';
+// import ProductHunt from "./components/ProductHunt/ProductHunt";
 // import Calculator from "./components/CalculatorBased/Calculator";
 
-ReactDOM.render(<ProductHunt />, document.getElementById('root'));
+ReactDOM.render(<TimersDashboard />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
