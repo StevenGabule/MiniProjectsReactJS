@@ -2,17 +2,36 @@ import React, {Component} from "react";
 import TimerForm from "./TimerForm";
 
 class ToggleableTimerForm extends Component {
+    state = {
+        isOpen: false
+    };
+
+    handleFormOpen = () => {
+        this.setState({isOpen: true})
+    };
+
+    handleFormClose = () => {
+        this.setState({isOpen: false});
+    };
+
+    handleFormSubmit = (timer) => {
+        this.props.onFormSubmit(timer);
+        this.setState({isOpen: false})
+    };
+
     render() {
-        if (this.props.isOpen) {
+        const { isOpen} = this.state;
+
+        if (isOpen) {
             return (
-                <TimerForm />
+                <TimerForm onFormSubmit={this.handleFormSubmit} onFormClose={this.handleFormClose} />
             )
         } else {
             return (
                 <div className='ul basic content center aligned segment' style={{textAlign: 'center', marginTop: '20px'}}>
-                    <div className="ui basic button icon">
+                    <button className="ui basic button icon" onClick={this.handleFormOpen}>
                         <i className="plus icon" />
-                    </div>
+                    </button>
                 </div>
             )
         }

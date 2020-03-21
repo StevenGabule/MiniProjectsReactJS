@@ -1,31 +1,62 @@
 import React, {Component} from "react";
 import TimerForm from "./TimerForm";
-import propTypes from "prop-types";
 import Timer from "./Timer";
 
 class EditableTimer extends Component {
-    render() {
-        const {title, project, elapsed, runningSince, edit} = this.props;
+    state = {
+        editFormOpen: false,
+    };
 
-        if (edit) {
+
+    handleEditClick = () => {
+        this.openForm();
+    };
+
+    handleFormClose = () => {
+        this.closeForm();
+    };
+
+    handleSubmit = timer => {
+        this.props.onFormSubmit(timer);
+        this.closeForm();
+    };
+
+    closeForm = () => {
+        this.setState({editFormOpen: false})
+    };
+
+    openForm = () => {
+        this.setState({editFormOpen: true})
+    };
+
+
+    render() {
+        const {editFormOpen} = this.state;
+        const {title, project, elapsed, runningSince, id, onTrashClick} = this.props;
+
+        if (editFormOpen) {
             return (
-                <TimerForm title={title} project={project}/>
+                <TimerForm
+                    id={id}
+                    title={title}
+                    project={project}
+                    onFormSubmit={this.handleSubmit}
+                    onFormClose={this.handleFormClose}/>
             )
         } else {
             return (
                 <Timer
+                    id={id}
                     title={title}
                     project={project}
                     elapsed={elapsed}
                     runningSince={runningSince}
+                    onEditClick={this.handleEditClick}
+                    onTrashClick={onTrashClick}
                 />
             )
         }
     }
 }
-
-EditableTimer.propTypes = {
-    edit: propTypes.bool
-};
 
 export default EditableTimer;
