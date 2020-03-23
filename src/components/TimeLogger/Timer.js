@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import TimerActionButton from "./TimerActionButton";
 
 class Timer extends Component {
 
@@ -12,6 +13,14 @@ class Timer extends Component {
 
     componentWillUnmount() {
         clearInterval(this.forceUpdateInterval);
+    };
+
+    handleStartClick = () => {
+        this.props.onStartClick(this.props.id)
+    };
+
+    handleStopClick = () => {
+        this.props.onStopClick(this.props.id)
     };
 
 
@@ -41,9 +50,16 @@ class Timer extends Component {
                         </span>
                     </div>
                 </div>
+                {/*
                 <div className="ui bottom attached blue basic button">
                     Start
-                </div>
+                </div>*/}
+
+                <TimerActionButton
+                    timerIsRunning={!!this.props.runningSince}
+                    onStartClick={this.handleStartClick}
+                    onStopClick={this.handleStopClick}
+                />
             </div>
         )
     }
